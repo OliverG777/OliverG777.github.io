@@ -4,9 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Oliver García — Portfolio</title>
-  <meta name="description" content="Creatividad aplicada a soluciones reales en web, cloud y seguridad. Proyectos, stack y contacto." />
+  <meta name="description" content="Creatividad que se implementa: sitios rápidos, estéticos y medibles. Proyectos, stack y contacto." />
   <meta property="og:title" content="Oliver García — Portfolio" />
-  <meta property="og:description" content="Creatividad aplicada a soluciones reales en web, cloud y seguridad." />
+  <meta property="og:description" content="Creatividad que se implementa: sitios rápidos, estéticos y medibles." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="/og-image.png" />
   <link rel="icon" href="/favicon.ico" />
@@ -19,11 +19,12 @@
 
   <style>
     :root{
-      --p-1: #791978;
-      --p-2: #631361;
-      --p-3: #4E0D49;
-      --p-4: #380632;
-      --p-5: #22001A;
+      /* Paleta morados (inspirada en tu imagen) */
+      --p-1: #791978; /* brillo controlado */
+      --p-2: #631361; /* highlight */
+      --p-3: #4E0D49; /* medio */
+      --p-4: #380632; /* anillo sombra */
+      --p-5: #22001A; /* centro oscuro */
 
       --text: #F5F3FF;
       --text-dim: #D6CDEB;
@@ -33,16 +34,19 @@
       --glass-blur: 12px;
     }
 
-    body { font-family: "Space Grotesk"; color: var(--text); }
-    code, kbd, samp, .mono { font-family: "DM Mono"; }
+    /* Tipos por defecto */
+    body { font-family: "Space Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; color: var(--text); }
+    code, kbd, samp, .mono { font-family: "DM Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas; }
 
+    /* Canvas de fondo (portal) */
     #bg-canvas{
       position: fixed; inset: 0;
       width: 100vw; height: 100vh;
-      z-index: -1;
+      z-index: -1; display:block;
       background: radial-gradient(1200px 800px at 50% 50%, var(--p-4), var(--p-5) 60%);
     }
 
+    /* Tarjeta de vidrio */
     .glass {
       background: var(--glass-bg);
       backdrop-filter: blur(var(--glass-blur));
@@ -51,21 +55,35 @@
       border-radius: 20px;
     }
 
+    /* Botón pausa */
+    .portal-toggle{
+      position: fixed; right: 12px; bottom: 12px; z-index: 50;
+      font-size: 12px; opacity: .9;
+    }
+
+    /* Scrollbar sutil */
     ::-webkit-scrollbar{width:10px;height:10px}
     ::-webkit-scrollbar-thumb{background:#ffffff2a;border-radius:999px}
   </style>
 </head>
 
 <body class="min-h-screen">
+  <!-- FONDO PORTAL -->
   <canvas id="bg-canvas" aria-hidden="true"></canvas>
 
   <!-- NAV -->
   <header class="sticky top-0 z-40 backdrop-blur border-b border-white/10">
     <nav class="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
-      <a href="#home" class="font-semibold tracking-tight text-lg">Oliver García</a>
+      <a href="#home" class="font-semibold tracking-tight text-lg text-[var(--text)]">Oliver García</a>
       <div class="flex items-center gap-2">
-        <a id="resumeLink" href="/mnt/data/Oliver García CV.pdf" target="_blank" rel="noreferrer" class="hidden sm:inline-block px-3 py-1.5 rounded-xl glass">Descargar CV</a>
-        <a id="githubTop" href="#" target="_blank" rel="noreferrer" class="px-3 py-1.5 rounded-xl glass">GitHub</a>
+        <a id="resumeLink" href="#" target="_blank" rel="noreferrer"
+           class="hidden sm:inline-block px-3 py-1.5 rounded-xl glass hover:opacity-90 transition">
+          Descargar CV
+        </a>
+        <a id="githubTop" href="#" target="_blank" rel="noreferrer"
+           class="px-3 py-1.5 rounded-xl glass hover:opacity-90 transition">
+          GitHub
+        </a>
       </div>
     </nav>
   </header>
@@ -74,28 +92,26 @@
     <!-- HERO -->
     <section class="grid md:grid-cols-5 gap-8 items-center">
       <div class="md:col-span-3 glass p-6 md:p-8">
-        <p class="text-sm uppercase tracking-widest opacity-80" id="role">Estudiante de Ingeniería TI & Negocios Digitales</p>
-
+        <p class="text-sm uppercase tracking-widest opacity-80" id="role">Ingeniero de Software (próximo a egresar)</p>
         <h1 class="mt-2 text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight">
-          Hola, soy <span id="name">Oliver García Fragoso</span>.
-          <br><span class="opacity-90" id="tagline">Creatividad aplicada a soluciones reales en web, cloud y seguridad.</span>
+          Hola, soy <span id="name">Oliver García</span>.<br />
+          <span class="opacity-90" id="tagline">Creatividad que se implementa: sitios rápidos, estéticos y medibles.</span>
         </h1>
-
         <p class="mt-4 text-base opacity-85">
           <span id="location">Querétaro, MX</span> ·
-          <a class="underline hover:opacity-90" id="emailLink" href="mailto:oliver_garcia@anahuac.mx">oliver_garcia@anahuac.mx</a>
+          <a class="underline hover:opacity-90" id="emailLink" href="#">oliver@example.com</a>
         </p>
-
         <div class="mt-6 flex flex-wrap gap-3">
-          <a href="#projects" class="px-4 py-2 rounded-2xl glass">Ver proyectos</a>
-          <a id="contactBtn" href="mailto:oliver_garcia@anahuac.mx" class="px-4 py-2 rounded-2xl glass">Contáctame</a>
+          <a href="#projects" class="px-4 py-2 rounded-2xl glass hover:scale-[1.02] active:scale-[0.98] transition">Ver proyectos</a>
+          <a id="contactBtn" href="#" class="px-4 py-2 rounded-2xl glass hover:scale-[1.02] active:scale-[0.98] transition">Contáctame</a>
+          <a id="linkedinTop" href="#" target="_blank" rel="noreferrer" class="px-4 py-2 rounded-2xl glass hover:scale-[1.02] transition">LinkedIn</a>
         </div>
       </div>
-
       <div class="md:col-span-2">
-        <div class="aspect-square rounded-3xl glass flex items-center justify-center text-6xl">
+        <div class="aspect-square rounded-3xl glass flex items-center justify-center text-6xl select-none">
           <span id="avatarInitials">OG</span>
         </div>
+        <p class="mt-2 text-sm opacity-80">Monograma o foto aquí.</p>
       </div>
     </section>
 
@@ -103,8 +119,7 @@
     <section id="skills" class="py-12">
       <div class="glass p-6 md:p-8">
         <h2 class="text-2xl font-semibold">Stack y enfoque</h2>
-        <p class="opacity-85 mt-1">Código limpio, UI clara, arquitectura mantenible.</p>
-
+        <p class="opacity-85 mt-1">Código limpio, UI clara, APIs predecibles.</p>
         <div id="skillsGrid" class="mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-4"></div>
       </div>
     </section>
@@ -114,16 +129,14 @@
       <div class="flex items-end justify-between gap-4 flex-wrap">
         <div class="glass p-4">
           <h2 class="text-2xl font-semibold">Proyectos</h2>
-          <p class="opacity-85 mt-1">Casos reales y prototipos listos para producción.</p>
+          <p class="opacity-85 mt-1">Casos reales y prototipos listos para escalar.</p>
         </div>
-
         <div class="flex flex-wrap gap-2 items-center">
           <input id="searchInput" type="text" placeholder="Buscar…"
-            class="px-3 py-2 rounded-xl glass placeholder-white/60 focus:outline-none" />
+                 class="px-3 py-2 rounded-xl glass placeholder-white/60 focus:outline-none" />
           <div id="tagsRow" class="flex gap-2 overflow-x-auto"></div>
         </div>
       </div>
-
       <div id="projectsGrid" class="mt-6 grid md:grid-cols-2 xl:grid-cols-3 gap-6"></div>
     </section>
 
@@ -132,31 +145,39 @@
       <div class="grid md:grid-cols-3 gap-6">
         <div class="md:col-span-2 glass p-6 md:p-8">
           <h2 class="text-2xl font-semibold">Cómo trabajo</h2>
-
           <ul class="mt-3 space-y-2 text-sm leading-6 opacity-90 list-disc pl-4">
-            <li>Enfoque en MVPs funcionales, medibles y sostenibles.</li>
-            <li>Interfaces claras y accesibles, evitando complejidad innecesaria.</li>
-            <li>APIs limpias, arquitectura modular y documentación real.</li>
-            <li>Deploys constantes, métricas simples y evolución rápida.</li>
+            <li>Empiezo con objetivos de negocio (no sólo features).</li>
+            <li>Diseño primero: wireframes rápidos y componentes reutilizables.</li>
+            <li>APIs limpias, validación y tests en lo esencial.</li>
+            <li>Deploy continuo con métricas simples (tiempo de respuesta, errores, retención).</li>
           </ul>
         </div>
-
         <aside class="glass p-6 md:p-8">
           <h3 class="font-medium">Contacto</h3>
           <p class="opacity-85 text-sm mt-1">Disponible para medio tiempo / freelance.</p>
-
           <div class="mt-3 space-y-2 text-sm">
-            <a class="underline" id="emailAside" href="mailto:oliver_garcia@anahuac.mx">oliver_garcia@anahuac.mx</a>
-            <p id="phoneText">+52 427 109 3554</p>
+            <a class="underline" id="emailAside" href="#">oliver@example.com</a>
+            <p id="phoneText">+52 442 XXX XXXX</p>
             <div class="flex gap-3">
-              <a class="underline" id="githubAside" href="#" target="_blank">GitHub</a>
-              <a class="underline" id="linkedinAside" href="#" target="_blank">LinkedIn</a>
-              <a class="underline" id="xAside" href="#" target="_blank">X</a>
+              <a class="underline" id="githubAside" href="#" target="_blank" rel="noreferrer">GitHub</a>
+              <a class="underline" id="linkedinAside" href="#" target="_blank" rel="noreferrer">LinkedIn</a>
+              <a class="underline" id="xAside" href="#" target="_blank" rel="noreferrer">X</a>
             </div>
           </div>
-
-          <a id="resumeAside" href="/mnt/data/Oliver García CV.pdf" class="mt-4 inline-block px-4 py-2 rounded-2xl glass" target="_blank">Descargar CV (PDF)</a>
+          <a id="resumeAside" href="#" class="mt-4 inline-block px-4 py-2 rounded-2xl glass hover:opacity-90 transition" target="_blank" rel="noreferrer">Descargar CV (PDF)</a>
         </aside>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-14">
+      <div class="glass p-8">
+        <h2 class="text-2xl font-semibold">¿Tienes un proyecto?</h2>
+        <p class="opacity-85 mt-1 text-sm">Construyamos un MVP claro y medible.</p>
+        <div class="mt-5 flex flex-wrap gap-3">
+          <a id="contactCta" href="#" class="px-4 py-2 rounded-2xl glass">Escríbeme</a>
+          <a href="#projects" class="px-4 py-2 rounded-2xl glass">Ver más trabajos</a>
+        </div>
       </div>
     </section>
   </main>
@@ -164,98 +185,107 @@
   <!-- FOOTER -->
   <footer class="border-t border-white/10">
     <div class="max-w-6xl mx-auto px-4 py-8 text-sm opacity-85 flex flex-wrap items-center justify-between gap-3">
-      <p>© <span id="year"></span> Oliver García Fragoso. Todos los derechos reservados.</p>
-      <a class="underline" href="#home">Volver arriba</a>
+      <p>© <span id="year"></span> <span id="nameFooter">Oliver García</span>. Todos los derechos reservados.</p>
+      <p>Hecho con HTML + Tailwind. <a class="underline" href="#home">Volver arriba</a></p>
     </div>
   </footer>
-
-  <!-- ===== DATA ===== -->
+  <!-- ===== EDITA AQUÍ TUS DATOS ===== -->
   <script>
     const SITE = {
       name: 'Oliver García Fragoso',
-      role: 'Estudiante de Ingeniería TI & Negocios Digitales',
-      tagline: 'Creatividad aplicada a soluciones reales en web, cloud y seguridad.',
+      role: 'Ingeniero de Software (próximo a egresar)',
+      tagline: 'Creatividad que se implementa: sitios rápidos, estéticos y medibles.',
       location: 'Querétaro, MX',
       email: 'oliver_garcia@anahuac.mx',
       phone: '+52 427 109 3554',
-      resumeUrl: '/mnt/data/Oliver García CV.pdf',
-      github: 'https://github.com/',
+
+      // PDF que debes subir en la misma carpeta que index.html
+      resumeUrl: 'Oliver-Garcia-CV.pdf',
+
+      github: 'https://github.com/',   // agrega tu user cuando gustes
       linkedin: '#',
       x: '#'
     };
 
     const SKILLS = [
-      { title: 'Frontend', items: ['React', 'Next.js', 'Tailwind', 'TypeScript'] },
-      { title: 'Backend', items: ['Node.js', 'Express', 'APIs REST', 'PostgreSQL'] },
-      { title: 'Cloud', items: ['Azure', 'Docker', 'CI/CD'] },
-      { title: 'Seguridad', items: ['Firewall/iptables', 'Buenas prácticas OWASP'] }
+      { title: 'Frontend', items: ['React/Next.js', 'Tailwind CSS', 'TypeScript', 'Vite', 'Accesibilidad (a11y)'] },
+      { title: 'Backend', items: ['Node.js (Express/Nest)', 'APIs REST + JWT', 'MongoDB/Atlas, PostgreSQL', 'ORM (Prisma)'] },
+      { title: 'DevOps / Cloud', items: ['Docker', 'CI/CD (GitHub Actions)', "Nginx + SSL (Let's Encrypt)", 'Azure', 'Vercel/Netlify'] },
+      { title: 'Seguridad / Datos', items: ['Buenas prácticas OWASP', 'Control de acceso y roles', 'Hashing y cifrado básicos'] }
     ];
 
     const PROJECTS = [
       {
         title: 'Plataforma SaaS para restaurantes (Azure)',
-        description: 'Sistema de reservas y gestión de pedidos usando Azure App Service y Azure SQL con arquitectura escalable.',
-        tags: ['Azure', 'SaaS', 'Web', 'SQL'],
+        description: 'Diseño e implementación de sistema de reservas y gestión de pedidos. Uso de Azure App Service, SQL Database y arquitectura escalable.',
+        tags: ['Azure','SaaS','SQL','Cloud'],
         live: '#',
         repo: '#',
-        image: 'https://images.unsplash.com/photo-1442512595331-e89e73853f31?q=80&auto=format&fit=crop'
+        image: 'https://images.unsplash.com/photo-1442512595331-e89e73853f31?q=80&w=1600&auto=format&fit=crop'
       },
       {
         title: 'Polaris — Sistema de gestión para gimnasios',
-        description: 'Backend en Node.js con base relacional. Gestión de clientes, membresías y entrenamientos.',
-        tags: ['Node.js', 'Backend', 'SQL'],
+        description: 'Backend en Node.js, base de datos relacional, diseño orientado a usabilidad y gestión de clientes, membresías y entrenamientos.',
+        tags: ['Node.js','Backend','SQL','SaaS'],
         live: '#',
         repo: '#',
-        image: 'https://images.unsplash.com/photo-1571907480495-1c3d21a1b7a0?q=80&auto=format&fit=crop'
+        image: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1600&auto=format&fit=crop'
       },
       {
-        title: 'BinTech — Sistema integral de reciclaje',
-        description: 'Sensores IoT en botes inteligentes con alertas vía Telegram, más panel para centros de acopio.',
-        tags: ['IoT', 'Arquitectura', 'Telegram'],
+        title: 'BinTech — Proyecto de Ingeniería de Software',
+        description: 'Sistema integral de gestión de reciclaje: sensores IoT, alertas vía Telegram, panel de centros de acopio y documentación completa.',
+        tags: ['IoT','Ingeniería de Software','Telegram','Arquitectura'],
         live: '#',
         repo: '#',
-        image: 'https://images.unsplash.com/photo-1528323273322-d81458248d40?q=80&auto=format&fit=crop'
+        image: 'https://images.unsplash.com/photo-1528323273322-d81458248d40?q=80&w=1600&auto=format&fit=crop'
       },
       {
         title: 'Firewall GUI para Linux Mint (iptables)',
-        description: 'Interfaz gráfica para gestión de reglas de firewall con enfoque en seguridad informática.',
-        tags: ['Linux', 'Seguridad', 'Python', 'GUI'],
+        description: 'Interfaz gráfica para la gestión visual de reglas del firewall. Enfocado en seguridad informática y facilidad de uso.',
+        tags: ['Linux','Seguridad','Python','GUI'],
         live: '#',
         repo: '#',
-        image: 'https://images.unsplash.com/photo-1510511459019-5dda7724fd87?q=80&auto=format&fit=crop'
+        image: 'https://images.unsplash.com/photo-1510511459019-5dda7724fd87?q=80&w=1600&auto=format&fit=crop'
       }
     ];
   </script>
 
-  <!-- RENDER LÓGICA (igual que antes) -->
+  <!-- LÓGICA DE LA PÁGINA (render de skills/proyectos y datos) -->
   <script>
     const $ = (s,root=document) => root.querySelector(s);
     const $$ = (s,root=document) => Array.from(root.querySelectorAll(s));
 
-    // Data → UI
+    // Datos base → UI
     $('#name').textContent = SITE.name;
+    $('#nameFooter').textContent = SITE.name;
     $('#role').textContent = SITE.role;
     $('#tagline').textContent = SITE.tagline;
     $('#location').textContent = SITE.location;
+
     $('#emailLink').textContent = SITE.email;
     $('#emailLink').href = `mailto:${SITE.email}`;
+    $('#contactBtn').href = `mailto:${SITE.email}`;
+    $('#contactCta').href = `mailto:${SITE.email}?subject=Proyecto%20-%20${encodeURIComponent(SITE.name)}`;
+
     $('#emailAside').textContent = SITE.email;
     $('#emailAside').href = `mailto:${SITE.email}`;
-    $('#contactBtn').href = `mailto:${SITE.email}`;
     $('#phoneText').textContent = SITE.phone;
+
     $('#resumeLink').href = SITE.resumeUrl;
     $('#resumeAside').href = SITE.resumeUrl;
+
     $('#githubTop').href = SITE.github;
     $('#githubAside').href = SITE.github;
     $('#linkedinAside').href = SITE.linkedin;
-    $('#githubTop').href = SITE.github;
+    $('#xAside').href = SITE.x;
+
     $('#year').textContent = new Date().getFullYear();
 
-    // Iniciales avatar
-    const initials = SITE.name.split(' ').map(s => s[0]).slice(0,2).join('');
-    $('#avatarInitials').textContent = initials;
+    // Avatar iniciales
+    const initials = SITE.name.split(' ').map(s=>s[0]).slice(0,2).join('').toUpperCase();
+    document.getElementById('avatarInitials').textContent = initials;
 
-    // Skills render
+    // Render SKILLS
     const skillsGrid = $('#skillsGrid');
     SKILLS.forEach(g => {
       const card = document.createElement('div');
@@ -268,129 +298,218 @@
       skillsGrid.appendChild(card);
     });
 
-    // Projects render
+    // Render PROJECTS + filtros
     const tagsSet = new Set(['Todos']);
     PROJECTS.forEach(p => p.tags.forEach(t => tagsSet.add(t)));
 
     const tagsRow = $('#tagsRow');
-    let activeTag = 'Todos';
-
-    function makeTagBtn(label){
+    const makeTagBtn = (label, selected=false) => {
       const b = document.createElement('button');
       b.textContent = label;
-      b.className = 'px-3 py-1 rounded-full glass text-sm opacity-70';
-      b.onclick = () => {
+      b.className = 'px-3 py-1 rounded-full glass text-sm transition hover:scale-[1.02] active:scale-[0.98] ' +
+        (selected ? 'opacity-100' : 'opacity-70');
+
+      b.addEventListener('click', ()=>{
         activeTag = label;
         renderProjects();
-        $$('button', tagsRow).forEach(btn => btn.classList.toggle('opacity-100', btn.textContent===activeTag));
-      };
-      return b;
-    }
 
-    tagsSet.forEach(t => tagsRow.appendChild(makeTagBtn(t)));
+        $$('button', tagsRow).forEach(btn=>
+          btn.className =
+            'px-3 py-1 rounded-full glass text-sm transition hover:scale-[1.02] active:scale-[0.98] ' +
+            (btn.textContent === activeTag ? 'opacity-100' : 'opacity-70')
+        );
+      });
+
+      return b;
+    };
+
+    let activeTag = 'Todos';
+    tagsSet.forEach(t => tagsRow.appendChild(makeTagBtn(t, t==='Todos')));
 
     const projectsGrid = $('#projectsGrid');
     const searchInput = $('#searchInput');
 
     function renderProjects(){
       projectsGrid.innerHTML = '';
-      const q = searchInput.value.toLowerCase();
+      const q = (searchInput.value || '').trim().toLowerCase();
 
-      PROJECTS.filter(p => {
-        const matchTxt = p.title.toLowerCase().includes(q) || p.description.toLowerCase().includes(q);
-        const matchTag = activeTag === 'Todos' || p.tags.includes(activeTag);
-        return matchTxt && matchTag;
-      }).forEach((p) => {
-        const card = document.createElement('article');
-        card.className = 'group rounded-2xl overflow-hidden glass hover:shadow-xl';
-        card.innerHTML = `
-          <div class="aspect-video overflow-hidden">
-            <img src="${p.image}" class="w-full h-full object-cover transition group-hover:scale-105"/>
-          </div>
-          <div class="p-5">
-            <div class="flex flex-wrap gap-2 mb-2">
-              ${p.tags.map(t=>`<span class='text-xs px-2 py-0.5 rounded-full border border-white/20'>${t}</span>`).join('')}
+      PROJECTS
+        .filter(p => {
+          const text = (p.title + ' ' + p.description + ' ' + p.tags.join(' ')).toLowerCase();
+          const matchText = text.includes(q);
+          const matchTag  = activeTag === 'Todos' || p.tags.includes(activeTag);
+          return matchText && matchTag;
+        })
+        .forEach((p, idx) => {
+          const art = document.createElement('article');
+          art.className = (idx===0 ? 'md:col-span-2 xl:col-span-1 ' : '') +
+            'group rounded-2xl overflow-hidden glass transition hover:shadow-xl hover:-translate-y-0.5';
+
+          art.innerHTML = `
+            <div class="aspect-video overflow-hidden">
+              <img src="${p.image}" alt="${p.title}"
+                   class="w-full h-full object-cover group-hover:scale-[1.03] transition" loading="lazy" />
             </div>
-            <h3 class="font-medium text-lg">${p.title}</h3>
-            <p class="opacity-90 mt-1 text-sm">${p.description}</p>
-          </div>`;
-        projectsGrid.appendChild(card);
-      });
+            <div class="p-5">
+              <div class="flex flex-wrap gap-2 mb-2">
+                ${p.tags.map(t=>`<span class='text-xs px-2 py-0.5 rounded-full border border-white/20'>${t}</span>`).join('')}
+              </div>
+              <h3 class="font-medium text-lg">${p.title}</h3>
+              <p class="opacity-90 mt-1 text-sm">${p.description}</p>
+              <div class="mt-4 flex gap-2">
+                <a href="${p.live}" target="_blank" rel="noreferrer" class="px-3 py-1.5 rounded-xl glass hover:opacity-90 transition">Demo</a>
+                <a href="${p.repo}" target="_blank" rel="noreferrer" class="px-3 py-1.5 rounded-xl glass hover:opacity-90 transition">Código</a>
+              </div>
+            </div>`;
+
+          projectsGrid.appendChild(art);
+        });
     }
 
-    searchInput.oninput = renderProjects;
+    searchInput.addEventListener('input', renderProjects);
     renderProjects();
   </script>
-
-  <!-- SHADER WEBGL (igual que tu versión) -->
+  <!-- SHADER DEL PORTAL (WebGL) -->
   <script>
   (() => {
     const canvas = document.getElementById('bg-canvas');
-    const gl = canvas.getContext('webgl', { antialias: true });
-    if(!gl) return;
+    const gl = canvas.getContext('webgl', { antialias: true, premultipliedAlpha: false });
+    let paused = false, start = performance.now();
 
-    let start = performance.now();
-    function resize(){
-      const dpr = Math.min(devicePixelRatio, 2);
-      canvas.width = innerWidth * dpr;
-      canvas.height = innerHeight * dpr;
-      gl.viewport(0,0,canvas.width,canvas.height);
+    if (!gl) {
+      console.warn("WebGL no disponible, usando fondo estático.");
+      return;
     }
-    resize();
-    addEventListener('resize', resize);
+
+    // Respeta “prefers-reduced-motion”
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) paused = true;
+
+    function resize() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const w = Math.floor(innerWidth * dpr);
+      const h = Math.floor(innerHeight * dpr);
+      if (canvas.width !== w || canvas.height !== h) {
+        canvas.width = w; canvas.height = h;
+        gl.viewport(0, 0, w, h);
+      }
+    }
+    resize(); addEventListener('resize', resize);
 
     const vert = `
       attribute vec2 aPos;
-      void main(){ gl_Position = vec4(aPos,0.0,1.0); }
+      void main(){ gl_Position = vec4(aPos, 0.0, 1.0); }
     `;
     const frag = `
       precision highp float;
       uniform vec2 iResolution;
       uniform float iTime;
+
+      // Paleta morada
+      vec3 C1 = vec3(0.388, 0.0745, 0.380); // #631361
+      vec3 C2 = vec3(0.306, 0.0510, 0.286); // #4E0D49
+      vec3 C3 = vec3(0.133, 0.0000, 0.102); // #22001A
+
+      const float SPIN_ROTATION = -1.6;
+      const float SPIN_SPEED    = 2.2;
+      const float CONTRAST      = 3.0;
+      const float LIGHTING      = 0.35;
+      const float SPIN_AMOUNT   = 0.22;
+      const float PIXEL_FILTER  = 980.0;
+      const float SPIN_EASE     = 1.0;
+
+      vec4 effect(vec2 screenSize, vec2 screen_coords) {
+        float pixel_size = length(screenSize.xy) / PIXEL_FILTER;
+        vec2 uv = (floor(screen_coords.xy*(1.0/pixel_size))*pixel_size - 0.5*screenSize.xy)/length(screenSize.xy);
+        float uv_len = length(uv);
+
+        float speed = (SPIN_ROTATION*SPIN_EASE*0.2) + 302.2;
+        float new_pixel_angle = atan(uv.y, uv.x) + speed - SPIN_EASE*20.0*(SPIN_AMOUNT*uv_len + (1.0 - SPIN_AMOUNT));
+        vec2 mid = (screenSize.xy/length(screenSize.xy))/2.0;
+        uv = (vec2((uv_len * cos(new_pixel_angle) + mid.x), (uv_len * sin(new_pixel_angle) + mid.y)) - mid);
+
+        uv *= 26.0;
+        speed = iTime*(SPIN_SPEED);
+        vec2 uv2 = vec2(uv.x+uv.y);
+
+        for(int i=0; i<5; i++){
+          uv2 += sin(max(uv.x, uv.y)) + uv;
+          uv  += 0.5*vec2(cos(5.1123314 + 0.353*uv2.y + speed*0.131121),
+                          sin(uv2.x - 0.113*speed));
+          uv  -= 1.0*cos(uv.x + uv.y) - 1.0*sin(uv.x*0.711 - uv.y);
+        }
+
+        float contrast_mod = (0.25*CONTRAST + 0.5*SPIN_AMOUNT + 1.2);
+        float paint_res = min(2.0, max(0.0, length(uv)*(0.035)*contrast_mod));
+        float c1p = max(0.0, 1.0 - contrast_mod*abs(1.0 - paint_res));
+        float c2p = max(0.0, 1.0 - contrast_mod*abs(paint_res));
+        float c3p = 1.0 - min(1.0, c1p + c2p);
+        float light = (LIGHTING - 0.2)*max(c1p*5.0 - 4.0, 0.0) + LIGHTING*max(c2p*5.0 - 4.0, 0.0);
+
+        vec3 col = (0.3/CONTRAST)*C1 + (1.0 - 0.3/CONTRAST)*(C1*c1p + C2*c2p + C3*c3p) + light;
+
+        // Viñeta suave hacia el centro oscuro (portal)
+        float vign = smoothstep(0.9, 0.2, length(screen_coords / screenSize - 0.5));
+        col = mix(col, C3*0.9, 1.0 - vign);
+
+        return vec4(col, 1.0);
+      }
+
       void main(){
-        vec2 uv = gl_FragCoord.xy / iResolution.xy;
-        float d = distance(uv, vec2(0.5));
-        float glow = smoothstep(0.7,0.2,d);
-        vec3 col = mix(vec3(0.2,0,0.2), vec3(0.4,0,0.4), glow);
-        gl_FragColor = vec4(col,1.0);
+        vec2 fragCoord = gl_FragCoord.xy;
+        vec4 color = effect(iResolution.xy, fragCoord);
+        gl_FragColor = color;
       }
     `;
 
-    function shader(type,src){
+    function compile(type, src){
       const s = gl.createShader(type);
-      gl.shaderSource(s,src);
-      gl.compileShader(s);
+      gl.shaderSource(s, src); gl.compileShader(s);
+      if(!gl.getShaderParameter(s, gl.COMPILE_STATUS)){
+        console.error(gl.getShaderInfoLog(s)); return null;
+      }
       return s;
     }
 
-    const pr = gl.createProgram();
-    gl.attachShader(pr, shader(gl.VERTEX_SHADER, vert));
-    gl.attachShader(pr, shader(gl.FRAGMENT_SHADER, frag));
-    gl.linkProgram(pr);
-
-    gl.useProgram(pr);
+    const vs = compile(gl.VERTEX_SHADER, vert);
+    const fs = compile(gl.FRAGMENT_SHADER, frag);
+    const prog = gl.createProgram();
+    gl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);
+    if(!gl.getProgramParameter(prog, gl.LINK_STATUS)){
+      console.error(gl.getProgramInfoLog(prog)); return;
+    }
+    gl.useProgram(prog);
 
     const quad = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, quad);
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,1,-1,-1,1, -1,1,1,-1,1,1]), gl.STATIC_DRAW);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
+      -1,-1,  1,-1, -1, 1,
+      -1, 1,  1,-1,  1, 1
+    ]), gl.STATIC_DRAW);
 
-    const pos = gl.getAttribLocation(pr,'aPos');
-    gl.enableVertexAttribArray(pos);
-    gl.vertexAttribPointer(pos,2,gl.FLOAT,false,0,0);
+    const aPos = gl.getAttribLocation(prog, 'aPos');
+    gl.enableVertexAttribArray(aPos);
+    gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
 
-    const uRes = gl.getUniformLocation(pr,'iResolution');
-    const uTime = gl.getUniformLocation(pr,'iTime');
+    const uRes = gl.getUniformLocation(prog, 'iResolution');
+    const uTime = gl.getUniformLocation(prog, 'iTime');
+
+    // Botón pausa/reanudar
+    const btn = document.createElement('button');
+    btn.className = "portal-toggle px-3 py-1 rounded-xl glass";
+    btn.textContent = paused ? "Reanudar fondo" : "Pausar fondo";
+    btn.onclick = () => { paused = !paused; btn.textContent = paused ? "Reanudar fondo" : "Pausar fondo"; };
+    document.body.appendChild(btn);
 
     function frame(t){
       resize();
       gl.uniform2f(uRes, canvas.width, canvas.height);
-      gl.uniform1f(uTime, (t-start)/1000);
-      gl.drawArrays(gl.TRIANGLES,0,6);
+      gl.uniform1f(uTime, (paused ? 0.001 : (t - start) / 1000.0));
+      gl.drawArrays(gl.TRIANGLES, 0, 6);
       requestAnimationFrame(frame);
     }
     requestAnimationFrame(frame);
   })();
   </script>
-
 </body>
 </html>
