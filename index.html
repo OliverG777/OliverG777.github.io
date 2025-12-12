@@ -511,5 +511,17 @@
     requestAnimationFrame(frame);
   })();
   </script>
+  <div style="position: fixed; bottom: 20px; right: 20px; width: 320px; height: 180px; z-index: 9999; border: 1px solid #7c3aed; border-radius: 12px; overflow: hidden; box-shadow: 0 0 25px rgba(124, 58, 237, 0.25); background: #050505;">
+    <div style="background: #0f0f13; padding: 6px 12px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #7c3aed33;">
+        <span style="color: #a78bfa; font-family: monospace; font-size: 10px; letter-spacing: 1px;">● SENTINEL_LINK_V1</span>
+        <div style="width: 6px; height: 6px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 8px #22c55e; animation: blink 1s infinite;"></div>
+    </div>
+    <iframe 
+        src="https://sentinel-monitor-theta.vercel.app/" 
+        style="width: 100%; height: 100%; border: none;"
+        title="System Status">
+    </iframe>
+</div>
+<style>@keyframes blink { 50% { opacity: 0.3; } }</style>
 </body>
 </html>
